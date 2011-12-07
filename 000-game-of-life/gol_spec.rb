@@ -101,6 +101,11 @@ describe 'game of life' do
       subject.neighbours.count.should == 1
     end
 
+    it "detects a neighbour to the south" do
+      cell = subject.spawn_at(0, -1)
+      subject.neighbours.count.should == 1
+    end
+
     it "dies" do
       subject.die!
       subject.world.cells.should_not include(subject)
