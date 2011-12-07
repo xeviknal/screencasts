@@ -35,6 +35,11 @@ class Cell
         @neighbours << cell
       end
 
+      # Has a cell to the north west
+      if self.x == cell.x + 1 && self.y == cell.y - 1
+        @neighbours << cell
+      end
+
       # Has a cell to the west
       if self.x == cell.x + 1 && self.y == cell.y
         @neighbours << cell
@@ -106,6 +111,11 @@ describe 'game of life' do
       subject.neighbours.count.should == 1
     end
 
+    it "detects a neighbour to the north west" do
+      cell = subject.spawn_at(-1, 1)
+      subject.neighbours.count.should == 1
+    end
+
     it "detects a neighbour to the left" do
       cell = subject.spawn_at(-1, 0)
       subject.neighbours.count.should == 1
@@ -130,6 +140,7 @@ describe 'game of life' do
       cell = subject.spawn_at(-1, -1)
       subject.neighbours.count.should == 1
     end
+
 
     it "dies" do
       subject.die!
