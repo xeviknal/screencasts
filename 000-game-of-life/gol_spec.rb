@@ -44,6 +44,11 @@ class Cell
       if self.x == cell.x - 1 && self.y == cell.y
         @neighbours << cell
       end
+
+      # Has a cell to the south
+      if self.x == cell.x && self.y == cell.y + 1
+        @neighbours << cell
+      end
     end
 
     @neighbours
