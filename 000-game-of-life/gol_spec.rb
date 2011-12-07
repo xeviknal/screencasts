@@ -40,6 +40,7 @@ class Cell
         @neighbours << cell
       end
 
+      # Has a cell to the east
       if self.x == cell.x - 1 && self.y == cell.y
         @neighbours << cell
       end
