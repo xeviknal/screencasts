@@ -63,9 +63,7 @@ class World
 
   def tick!
     cells.each do |cell|
-      if cell.neighbours.count < 2
-        cell.die!
-      end
+      cell.die! unless [2,3].include?(cell.neighbours.count)
     end
   end
 end
